@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="">
+  <div class="jumbotron bg-transparent">
+    <h1>
+      <div style="font-family: 'Fira Code', monospace;"> ~ WorldTech Solutions ~ </div>
+    </h1><br>
+    <hr><br>
+    <div class="text-center col-12">
+      <h5>
+        <div style="font-family: 'Courgette', monospace;">
+          <p>Welcome to Our Company's Blog Page</p>
+        </div>
+      </h5>
+      <p class="">You must be logged in to post. If you do not have an account, please register and log in.
+      </p><br><br>
+      <p>Thank you for stopping by, if you would like to leave a message head over to the "About" section were you
+        will find a link to our contact form.
+      </p>
+    </div>
+  </div>
+</div>
+
+{# Go through each blog post #}
+<div class="zone blue">
+  <div class="grid-wrapper justify-content-center">
+    {% for post in blog_posts.items %}
+    <div class="box zone fillwidth fillheight">
+      <h5><a class="card-title" href="{{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}">{{ post.title }}</a>
+      </h5>
+      <a href="{{ url_for('users.user_posts', username=post.author.username) }}">Written By:
+        {{ post.author.username.title() }}</a>
+      <p>Published on: {{ post.date.strftime('%m-%d-%Y') }}</p>
+      <p class="card-text-center">{{ post.text[:100] }}...</p>
+      <a href="{{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}" class="btn btn-primary">Read Blog
+        Post</a>
+    </div>
+    {% endfor %}
+  </div>
+  <br><br>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      {% for page_num in blog_posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if blog_posts.page == page_num %}
+      <li class="page-item disabled">
+        <a class="page-link" href="{{ url_for('core.index', page=page_num) }}">{{ page_num }}</a></li>
+      {% else %}
+      <li class="page-item"><a class="page-link" href="{{ url_for('core.index', page=page_num) }}">{{ page_num }}</a>
+      </li>
+      {% endif %}
+      {% endfor %}
+  </nav>
+</div>
+
+
+{% endblock %}

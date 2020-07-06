@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="">
+  <div class="jumbotron bg-transparent">
+    <h1>
+      <div style="font-family: 'Fira Code', monospace;"> ~ Create Post ~ </div>
+    </h1><br>
+    <hr>
+    <p class="">
+      Create a BlogPost by filling out and submitting the form below. Once finished,
+      head over to the home page were you will find your BlogPost displayed and where you have the opportunity to
+      Read/Update/Delete.
+    </p>
+  </div>
+</div>
+
+<section class="zone blue">
+  <br>
+  <div class='text-center col-12'>
+    <h5>
+      <div style="font-family: 'Courgette', monospace;">
+        <p> {{current_user.username.title()}}, what would you like to share with us today?.... </p>
+      </div>
+    </h5>
+  </div>
+  <br>
+
+  <div class='container d-flex h-100'>
+    <div class="card border-dark mb-3">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card">
+            <div class="card-body text-secondary">
+              <h5 class="card-title"></h5>
+              <p class="card-text"></p>
+              <form class="form-group" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-group bg-transparent">
+                  {{ form.title.label(class="form-control-label") }}
+                  {{ form.title(class="form-control form-control-lg bg-transparent border-dark mb-3") }}
+
+                  {{ form.text.label(class="form-control-label") }}
+                  {{ form.text(class="form-control form-control-lg bg-transparent border-dark mb-3") }}
+
+                  {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+{% endblock content %}

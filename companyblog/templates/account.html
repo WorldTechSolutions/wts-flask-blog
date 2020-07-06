@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+
+<div class="">
+  <div class="jumbotron bg-transparent">
+    <h1>
+      <div style="font-family: 'Fira Code', monospace;"> ~ Account ~ </div>
+    </h1><br>
+    <hr>
+    <p> Update account information below... </p>
+  </div>
+
+
+  <section class="zone blue">
+    <br>
+    <div class='text-center col-12'>
+      <h5>
+        <div style="font-family: 'Courgette', monospace;">
+          <img align='center' src="{{ url_for('static', filename='profile_pics/' + current_user.profile_image) }}">
+          <p>{{ current_user.email }}</p>
+        </div>
+      </h5>
+    </div>
+    <br>
+    <div class='container d-flex align-items-center h-100'>
+      <div class="card border-dark mb-3">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="card text-center">
+              <div class="card-body text-secondary">
+                <h5 class="card-title"></h5>
+                <p class="card-text"></p>
+                <form method="POST" action="" enctype="multipart/form-data">
+                  {{ form.hidden_tag() }}
+                  <div class="form-group">
+                    {{ form.username.label(class="form-group") }}
+                    {{form.username(class="form-control form-control-lg border-dark mb-3")  }}
+
+                    {{ form.email.label(class="form-group") }}
+                    {{form.email(class="form-control form-control-lg border-dark mb-3")  }}
+
+                    <br>
+                    {{ form.picture.label(class="form-group") }}
+                    {{ form.picture(class="form-control-file") }}
+                    <br>
+
+                    {{ form.submit(class="btn btn-outline-info") }}
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  {% endblock %}

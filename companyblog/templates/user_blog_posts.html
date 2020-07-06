@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+
+<div class="">
+  <div class="jumbotron bg-transparent">
+    <h1>
+      <div style="font-family: 'Fira Code', monospace;"> ~ User Blog Post ~ </div>
+    </h1><br>
+    <hr><br>
+    <img align='center' src="{{ url_for('static', filename='profile_pics/' + user.profile_image) }}">
+    <div class="text-center col-12">
+      <h5>
+        <div style="font-family: 'Courgette', monospace;">
+          <p>Welcome to the page for {{user.username.title()}}</p>
+        </div>
+      </h5>
+      <p class="">Below you will find all of the blogposts that "{{user.username.title()}}" has shared with us.
+        <br>
+      </p>
+    </div>
+  </div>
+</div>
+
+{# Go through each blog post #}
+<div class="zone blue">
+  <div class="grid-wrapper justify-content-center">
+    {% for post in blog_posts.items %}
+    <div class="box zone fillwidth fillheight">
+      <h5><a class="card-title" href="{{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}">{{ post.title }}</a>
+      </h5>
+      <a href="{{ url_for('users.user_posts', username=post.author.username) }}">Written By:
+        {{ post.author.username.title() }}</a>
+      <p>Published on: {{ post.date.strftime('%m-%d-%Y') }}</p>
+      <p class="card-text-center">{{ post.text[:100] }}...</p>
+      <a href="{{ url_for('blog_posts.blog_post', blog_post_id=post.id) }}" class="btn btn-primary">Read Blog Post</a>
+    </div>
+    {% endfor %}
+  </div>
+  <br><br>
+  {% endblock content %}

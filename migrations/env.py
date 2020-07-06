@@ -9,10 +9,6 @@ from sqlalchemy import pool
 
 from alembic import context
 
-DATABASE_URL='sqlite:///' + \ os.path.join(basedir, 'data.sqlite')
-
-SECRET_KEY=TESTIINGOUTFLASKBLOGAPP00100173
-
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config

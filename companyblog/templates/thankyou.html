@@ -1,0 +1,50 @@
+{% extends 'base.html'%}
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+
+<div class="">
+  <div class="jumbotron bg-transparent">
+    <h1>
+      <div style="font-family: 'Fira Code', monospace;"> ~ Thankyou ~ </div>
+    </h1><br>
+    <hr><br>
+    <p class="">Someone will be reaching out to you shortly!.</p>
+  </div>
+</div>
+
+<section class="zone blue">
+  <br>
+  <div class='container'>
+    <h5>
+      <div style="font-family: 'Courgette', monospace;">
+        <p> Here is the info you gave us: </p>
+      </div>
+    </h5>
+  </div>
+  <br>
+  <div class='container d-flex h-100'>
+    <div class="card border-dark mb-3">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="card bg-transparent">
+            <div class="card-body text-secondary">
+              <h5 class="card-title"></h5>
+              <div style="font-family: 'Courgette', monospace;">
+                <p class="card-text align-items-center"></p>
+              </div>
+              <ul>
+                <li>Email: {{session['email']}}</li>
+                <li>Subject: {{session['subject']}}</li>
+                <li>Message: {{session['message']}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+{% endblock %}
