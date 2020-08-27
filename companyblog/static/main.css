@@ -9,7 +9,7 @@
 
 #footer {
   text-align: center;
-  position: absolute;
+  position: bottom;
   bottom: 0;
   width: 100%;
   height: 2.5rem;            /* Footer height */
