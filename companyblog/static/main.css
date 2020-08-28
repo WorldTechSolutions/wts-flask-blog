@@ -9,8 +9,6 @@
 
 #footer {
   text-align: center;
-  position: bottom;
-  bottom: 0;
   width: 100%;
   height: 50px;
   margin-top: -50px;            /* Footer height */
